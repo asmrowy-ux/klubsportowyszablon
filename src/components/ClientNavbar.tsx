@@ -82,19 +82,19 @@ export default function ClientNavbar({ logoUrl, title, logoSize }: { logoUrl?: s
               </button>
               <div className="absolute top-full mt-6 left-1/2 -translate-x-1/2 bg-secondary border border-border rounded-lg overflow-hidden shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[200px]">
                 <Link href="/history" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  🏛️ Historia Klubu
+                  Historia Klubu
                 </Link>
                 <Link href="/hall-of-fame" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  ⭐ Hall of Fame
+                  Hall of Fame
                 </Link>
                 <Link href="/staff" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  🏋️ Sztab Trenerski
+                  Sztab Trenerski
                 </Link>
                 <Link href="/table" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  📊 Tabela Ligi
+                  Tabela Ligi
                 </Link>
                 <Link href="/matches" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors">
-                  ⚽ Mecze i Wyniki
+                  Mecze i Wyniki
                 </Link>
               </div>
             </div>
