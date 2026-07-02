@@ -1,0 +1,57 @@
+{
+  "Navbar": {
+    "news": "Aktualności",
+    "team": "Pierwsza Drużyna",
+    "matches": "Mecze",
+    "club": "Klub",
+    "staff": "Sztab",
+    "shop": "Sklep",
+    "tickets": "Bilety"
+  },
+  "Hero": {
+    "latestNews": "Najnowsze Wiadomości",
+    "title1": "Nowa",
+    "title2": "Era",
+    "title3": "Nadchodzi",
+    "subtitle": "Poczuj pasję, chwałę i niepowstrzymaną siłę {clubName}, gdy dominujemy w nowym sezonie.",
+    "readFull": "Czytaj Całość",
+    "watchVideo": "Oglądaj Wideo",
+    "nextMatch": "Następny Mecz",
+    "buyTickets": "Kup Bilety"
+  },
+  "MatchCenter": {
+    "title": "Centrum Meczowe",
+    "fullTime": "Koniec Meczu",
+    "matchReport": "Raport Meczowy",
+    "upcomingFixtures": "Nadchodzące Spotkania",
+    "tickets": "Bilety",
+    "viewAll": "Wszystkie Mecze"
+  },
+  "NewsGrid": {
+    "latest": "Najnowsze",
+    "stories": "Wiadomości",
+    "allNews": "Wszystkie Newsy"
+  },
+  "Footer": {
+    "description": "Oficjalna strona {clubName}. Bądź na bieżąco z najnowszymi wiadomościami, meczami i ekskluzywnymi treściami klubowymi.",
+    "club": "Klub",
+    "history": "Historia",
+    "stadium": "Stadion",
+    "executive": "Zarząd",
+    "careers": "Kariera",
+    "contact": "Kontakt",
+    "teams": "Drużyny",
+    "firstTeam": "Pierwsza Drużyna",
+    "womensTeam": "Drużyna Kobiet",
+    "academy": "Akademia",
+    "staff": "Sztab",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Zapisz się, aby otrzymywać ekskluzywne aktualizacje i wcześniejszy dostęp do biletów.",
+    "enterEmail": "Podaj email...",
+    "go": "START",
+    "rights": "{clubName}. Wszelkie prawa zastrzeżone.",
+    "privacy": "Polityka Prywatności",
+    "terms": "Warunki Użytkowania",
+    "cookies": "Polityka Cookies"
+  }
+}

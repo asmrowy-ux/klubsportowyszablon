@@ -1,0 +1,57 @@
+{
+  "Navbar": {
+    "news": "News",
+    "team": "First Team",
+    "matches": "Matches",
+    "club": "Club",
+    "staff": "Staff",
+    "shop": "Shop",
+    "tickets": "Tickets"
+  },
+  "Hero": {
+    "latestNews": "Latest News",
+    "title1": "A New",
+    "title2": "Era",
+    "title3": "Begins",
+    "subtitle": "Feel the passion, glory, and unstoppable force of {clubName} as we dominate the new season.",
+    "readFull": "Read Full Story",
+    "watchVideo": "Watch Video",
+    "nextMatch": "Next Match",
+    "buyTickets": "Buy Tickets"
+  },
+  "MatchCenter": {
+    "title": "Match Center",
+    "fullTime": "Full Time",
+    "matchReport": "Match Report",
+    "upcomingFixtures": "Upcoming Fixtures",
+    "tickets": "Tickets",
+    "viewAll": "View All Matches"
+  },
+  "NewsGrid": {
+    "latest": "Latest",
+    "stories": "Stories",
+    "allNews": "All News"
+  },
+  "Footer": {
+    "description": "The official website of {clubName}. Stay up to date with the latest news, fixtures, and exclusive club content.",
+    "club": "Club",
+    "history": "History",
+    "stadium": "Stadium",
+    "executive": "Executive",
+    "careers": "Careers",
+    "contact": "Contact",
+    "teams": "Teams",
+    "firstTeam": "First Team",
+    "womensTeam": "Women's Team",
+    "academy": "Academy",
+    "staff": "Staff",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Subscribe to receive exclusive updates and early ticket access.",
+    "enterEmail": "Enter email...",
+    "go": "GO",
+    "rights": "{clubName}. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "cookies": "Cookie Policy"
+  }
+}

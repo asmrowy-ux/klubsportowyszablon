@@ -1,0 +1,115 @@
+"use client";
+
+import { useState } from "react";
+import ProfileModal from "@/components/ProfileModal";
+import { Link } from "@/i18n/routing";
+import { ChevronRight } from "lucide-react";
+
+export default function TeamClient({ players, clubName, clubLogoUrl }: { players: any[], clubName?: string, clubLogoUrl?: string }) {
+  const [selectedPlayer, setSelectedPlayer] = useState<any | null>(null);
+
+  // Group players by position
+  const goalkeepers = players.filter(p => p.position === 'goalkeeper' || p.position === 'Bramkarz');
+  const defenders = players.filter(p => p.position === 'defender' || p.position === 'Obrońca');
+  const midfielders = players.filter(p => p.position === 'midfielder' || p.position === 'Pomocnik');
+  const forwards = players.filter(p => p.position === 'forward' || p.position === 'Napastnik');
+
+  const groups = [
+    { title: 'Bramkarze', players: goalkeepers },
+    { title: 'Obrońcy', players: defenders },
+    { title: 'Pomocnicy', players: midfielders },
+    { title: 'Napastnicy', players: forwards },
+  ];
+
+  function getImageUrl(ref?: string) {
+    if (!ref) return '';
+    return `https://cdn.sanity.io/images/3kzdw0qu/production/${ref.replace('image-', '').replace('-jpg', '.jpg').replace('-png', '.png').replace('-webp', '.webp').replace('-svg', '.svg')}`;
+  }
+
+  return (
+    <div className="pt-48 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-h-[70vh]">
+      <div className="flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-gray-500 mb-8">
+        <Link href="/" className="hover:text-primary transition-colors">Klub</Link>
+        <ChevronRight className="w-4 h-4" />
+        <span className="text-primary">Pierwsza Drużyna</span>
+      </div>
+
+      <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-16">
+        Pierwsza <span className="text-primary">Drużyna</span>
+      </h1>
+
+      {groups.map((group, idx) => group.players.length > 0 && (
+        <div key={idx} className="mb-16">
+          <h2 className="text-2xl font-bold uppercase tracking-widest mb-8 pb-4 border-b border-border flex items-center gap-4">
+            <span className="w-3 h-3 bg-primary rounded-full"></span>
+            {group.title}
+          </h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {group.players.map((player: any) => {
+              const imgUrl = getImageUrl(player.image?.asset?._ref);
+              
+              return (
+                <div 
+                  key={player._id} 
+                  onClick={() => setSelectedPlayer(player)}
+                  className="group relative bg-secondary rounded-xl overflow-hidden cursor-pointer border border-border hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20"
+                >
+                  <div className="aspect-[3/4] bg-background relative flex items-end justify-center overflow-hidden">
+                    {imgUrl ? (
+                      <img 
+                        src={imgUrl} 
+                        alt={player.name} 
+                        className="absolute bottom-0 w-[90%] h-[90%] object-cover object-top mask-image-bottom transition-transform duration-500 group-hover:scale-110" 
+                        style={{ WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 15%)' }}
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center font-black text-8xl overflow-hidden bg-background">
+                        {clubLogoUrl && <img src={clubLogoUrl} alt="Logo" className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-20 dark:opacity-30 mix-blend-luminosity" />}
+                        <span className="text-gray-500/20 relative z-10">NC</span>
+                      </div>
+                    )}
+                    
+                    {/* Number Overlay */}
+                    {player.number && (
+                      <div className="absolute top-4 left-4 font-black text-4xl text-white/20 group-hover:text-primary/40 transition-colors">
+                        {player.number}
+                      </div>
+                    )}
+                    
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300" />
+                  </div>
+                  
+                  <div className="p-6 relative z-10 bg-secondary">
+                    <div className="text-xs text-primary font-bold tracking-widest uppercase mb-1">
+                      {player.nationality || 'Nieznana'}
+                    </div>
+                    <h3 className="text-xl font-black uppercase tracking-tight group-hover:text-primary transition-colors">
+                      {player.name}
+                    </h3>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+
+      {players.length === 0 && (
+        <div className="text-center py-20 bg-secondary/50 rounded-2xl border border-border">
+          <h2 className="text-2xl font-bold mb-4 text-gray-500 dark:text-gray-400">Brak zawodników w pierwszej drużynie.</h2>
+          <p className="text-gray-400 dark:text-gray-500">Przejdź do Sanity Studio, aby dodać graczy.</p>
+        </div>
+      )}
+
+      <ProfileModal 
+        isOpen={!!selectedPlayer} 
+        onClose={() => setSelectedPlayer(null)} 
+        profile={selectedPlayer}
+        type="player"
+        clubName={clubName}
+      />
+    </div>
+  );
+}
