@@ -7,7 +7,12 @@ export const contactType = defineType({
   fields: [
     defineField({
       name: 'email',
-      title: 'Email Address',
+      title: 'Email Address (Wyświetlany na stronie)',
+      type: 'string',
+    }),
+    defineField({
+      name: 'formRecipientEmail',
+      title: 'Form Recipient Email (Email, na który trafią wiadomości z formularza - domyślnie główny Email)',
       type: 'string',
     }),
     defineField({

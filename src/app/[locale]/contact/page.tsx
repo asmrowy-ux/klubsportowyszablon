@@ -40,80 +40,81 @@ export default async function ContactPage() {
           Skontaktuj się <span className="text-primary">z nami</span>
         </h1>
 
-        {!contact ? (
-          <div className="text-center py-20 bg-secondary/50 rounded-2xl border border-border">
-            <h2 className="text-2xl font-bold mb-4 text-gray-500 dark:text-gray-400">Brak danych kontaktowych.</h2>
-            <p className="text-gray-400 dark:text-gray-500">Dodaj je w Sanity Studio.</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <div className="space-y-6 mb-12">
-                {contact.email && (
-                  <div className="bg-secondary/30 p-6 rounded-xl border border-border flex items-center gap-6">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                      <Mail className="w-8 h-8 text-primary" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 font-bold uppercase tracking-widest mb-1">Email</div>
-                      <a href={`mailto:${contact.email}`} className="text-xl font-bold text-foreground hover:text-primary transition-colors">
-                        {contact.email}
-                      </a>
-                    </div>
-                  </div>
-                )}
-                {contact.phone && (
-                  <div className="bg-secondary/30 p-6 rounded-xl border border-border flex items-center gap-6">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                      <Phone className="w-8 h-8 text-primary" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 font-bold uppercase tracking-widest mb-1">Telefon</div>
-                      <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-xl font-bold text-foreground hover:text-primary transition-colors">
-                        {contact.phone}
-                      </a>
-                    </div>
-                  </div>
-                )}
-                {contact.address && (
-                  <div className="bg-secondary/30 p-6 rounded-xl border border-border flex items-center gap-6">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                      <MapPin className="w-8 h-8 text-primary" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 font-bold uppercase tracking-widest mb-1">Siedziba Klubu</div>
-                      <div className="text-lg font-bold text-foreground">
-                        {contact.address}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            {!contact ? (
+              <div className="mb-12 text-center p-8 bg-secondary/30 rounded-xl border border-border">
+                <p className="text-gray-500 dark:text-gray-400 font-bold uppercase tracking-widest text-sm">Dodaj dane kontaktowe (telefon, email, adres) w Sanity Studio.</p>
+              </div>
+            ) : (
+              <>
+                <div className="space-y-6 mb-12">
+                  {contact.email && (
+                    <div className="bg-secondary/30 p-6 rounded-xl border border-border flex items-center gap-6">
+                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
+                        <Mail className="w-8 h-8 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400 font-bold uppercase tracking-widest mb-1">Email</div>
+                        <a href={`mailto:${contact.email}`} className="text-xl font-bold text-foreground hover:text-primary transition-colors">
+                          {contact.email}
+                        </a>
                       </div>
                     </div>
+                  )}
+                  {contact.phone && (
+                    <div className="bg-secondary/30 p-6 rounded-xl border border-border flex items-center gap-6">
+                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
+                        <Phone className="w-8 h-8 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400 font-bold uppercase tracking-widest mb-1">Telefon</div>
+                        <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-xl font-bold text-foreground hover:text-primary transition-colors">
+                          {contact.phone}
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                  {contact.address && (
+                    <div className="bg-secondary/30 p-6 rounded-xl border border-border flex items-center gap-6">
+                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
+                        <MapPin className="w-8 h-8 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400 font-bold uppercase tracking-widest mb-1">Siedziba Klubu</div>
+                        <div className="text-lg font-bold text-foreground">
+                          {contact.address}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {contact.description && (
+                  <div className="prose dark:prose-invert prose-lg text-gray-700 dark:text-gray-300">
+                    <PortableText value={contact.description} />
                   </div>
                 )}
-              </div>
+              </>
+            )}
 
-              {contact.description && (
-                <div className="prose dark:prose-invert prose-lg text-gray-700 dark:text-gray-300">
-                  <PortableText value={contact.description} />
-                </div>
-              )}
-
-              <ContactForm />
-            </div>
-
-            <div className="relative">
-              {imageUrl ? (
-                <div className="sticky top-32 rounded-2xl overflow-hidden border border-border shadow-2xl h-full min-h-[400px]">
-                  <img src={imageUrl} alt="Siedziba klubu" className="w-full h-full object-cover absolute inset-0" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent pointer-events-none" />
-                </div>
-              ) : (
-                <div className="sticky top-32 rounded-2xl overflow-hidden border border-border shadow-2xl h-full min-h-[400px] bg-secondary flex items-center justify-center relative">
-                  {clubLogoUrl && <img src={clubLogoUrl} alt="Logo" className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-20 dark:opacity-30 mix-blend-luminosity" />}
-                  <span className="text-gray-500 font-bold uppercase tracking-widest text-sm relative z-10">Brak zdjęcia</span>
-                </div>
-              )}
-            </div>
+            <ContactForm recipientEmail={contact?.formRecipientEmail || contact?.email} />
           </div>
-        )}
+
+          <div className="relative">
+            {imageUrl ? (
+              <div className="sticky top-32 rounded-2xl overflow-hidden border border-border shadow-2xl h-full min-h-[400px]">
+                <img src={imageUrl} alt="Siedziba klubu" className="w-full h-full object-cover absolute inset-0" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent pointer-events-none" />
+              </div>
+            ) : (
+              <div className="sticky top-32 rounded-2xl overflow-hidden border border-border shadow-2xl h-full min-h-[400px] bg-secondary flex items-center justify-center relative">
+                {clubLogoUrl && <img src={clubLogoUrl} alt="Logo" className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-20 dark:opacity-30 mix-blend-luminosity" />}
+                <span className="text-gray-500 font-bold uppercase tracking-widest text-sm relative z-10">Brak zdjęcia</span>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
       <Footer />

@@ -3,14 +3,15 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
 
-export default function ContactForm() {
+export default function ContactForm({ recipientEmail }: { recipientEmail?: string }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("submitting");
     
-    // Simulate network request
+    // Simulate network request. W przyszłości można tu podpiąć backend (np. Resend, Sendgrid)
+    console.log(`Wiadomość z formularza zostanie wysłana na adres: ${recipientEmail || 'domyślny email'}`);
     setTimeout(() => {
       setStatus("success");
       (e.target as HTMLFormElement).reset();
