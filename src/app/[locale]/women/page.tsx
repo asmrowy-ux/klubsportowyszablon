@@ -1,11 +1,11 @@
 import { client } from "@/sanity/lib/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import TeamClient from "./TeamClient";
+import TeamClient from "../team/TeamClient";
 
-export default async function TeamPage() {
+export default async function WomenTeamPage() {
   const [players, settings] = await Promise.all([
-    client.fetch(`*[_type == "player" && isLegend != true && (!defined(team) || team == "first")] | order(number asc)`),
+    client.fetch(`*[_type == "player" && team == "women"] | order(number asc)`),
     client.fetch(`*[_type == "siteSettings"][0]{ title, logo { asset { _ref } } }`)
   ]);
 
@@ -21,7 +21,15 @@ export default async function TeamPage() {
   return (
     <main className="flex min-h-screen flex-col bg-background text-foreground">
       <Navbar />
-      <TeamClient players={players} clubName={clubName} clubLogoUrl={clubLogoUrl} />
+      <TeamClient 
+        players={players} 
+        clubName={clubName} 
+        clubLogoUrl={clubLogoUrl} 
+        title="Drużyna"
+        subtitle="Kobiet"
+        pageName="Drużyna Kobiet"
+        emptyStateMsg="Brak zawodniczek w drużynie kobiet."
+      />
       <Footer />
     </main>
   );

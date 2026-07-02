@@ -59,6 +59,19 @@ export const playerType = defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'team',
+      title: 'Team Category',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Pierwsza Drużyna (First Team)', value: 'first'},
+          {title: 'Drużyna Kobiet (Women)', value: 'women'},
+          {title: 'Akademia (Academy)', value: 'academy'},
+        ],
+      },
+      initialValue: 'first',
+    }),
+    defineField({
       name: 'nationality',
       title: 'Nationality',
       type: 'string',

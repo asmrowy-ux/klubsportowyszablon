@@ -76,8 +76,13 @@ export default async function Footer() {
           <div>
             <h4 className="text-foreground font-bold uppercase tracking-widest mb-6">{t('teams')}</h4>
             <ul className="space-y-4 text-sm text-gray-400">
-              {['firstTeam', 'womensTeam', 'academy', 'staff'].map(link => (
-                <li key={link}><Link href="#" className="hover:text-primary transition-colors">{t(link as any)}</Link></li>
+              {[
+                { key: 'firstTeam', href: '/team' },
+                { key: 'womensTeam', href: '/women' },
+                { key: 'academy', href: '/academy' },
+                { key: 'staff', href: '/staff' }
+              ].map(link => (
+                <li key={link.key}><Link href={link.href} className="hover:text-primary transition-colors">{t(link.key as any)}</Link></li>
               ))}
             </ul>
           </div>

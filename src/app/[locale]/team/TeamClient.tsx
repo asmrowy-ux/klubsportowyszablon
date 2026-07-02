@@ -5,7 +5,23 @@ import ProfileModal from "@/components/ProfileModal";
 import { Link } from "@/i18n/routing";
 import { ChevronRight } from "lucide-react";
 
-export default function TeamClient({ players, clubName, clubLogoUrl }: { players: any[], clubName?: string, clubLogoUrl?: string }) {
+export default function TeamClient({ 
+  players, 
+  clubName, 
+  clubLogoUrl,
+  title = "Pierwsza",
+  subtitle = "Drużyna",
+  pageName = "Pierwsza Drużyna",
+  emptyStateMsg = "Brak zawodników w pierwszej drużynie."
+}: { 
+  players: any[], 
+  clubName?: string, 
+  clubLogoUrl?: string,
+  title?: string,
+  subtitle?: string,
+  pageName?: string,
+  emptyStateMsg?: string
+}) {
   const [selectedPlayer, setSelectedPlayer] = useState<any | null>(null);
 
   // Group players by position
@@ -31,11 +47,11 @@ export default function TeamClient({ players, clubName, clubLogoUrl }: { players
       <div className="flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-gray-500 mb-8">
         <Link href="/" className="hover:text-primary transition-colors">Klub</Link>
         <ChevronRight className="w-4 h-4" />
-        <span className="text-primary">Pierwsza Drużyna</span>
+        <span className="text-primary">{pageName}</span>
       </div>
 
       <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-16">
-        Pierwsza <span className="text-primary">Drużyna</span>
+        {title} <span className="text-primary">{subtitle}</span>
       </h1>
 
       {groups.map((group, idx) => group.players.length > 0 && (
@@ -98,7 +114,7 @@ export default function TeamClient({ players, clubName, clubLogoUrl }: { players
 
       {players.length === 0 && (
         <div className="text-center py-20 bg-secondary/50 rounded-2xl border border-border">
-          <h2 className="text-2xl font-bold mb-4 text-gray-500 dark:text-gray-400">Brak zawodników w pierwszej drużynie.</h2>
+          <h2 className="text-2xl font-bold mb-4 text-gray-500 dark:text-gray-400">{emptyStateMsg}</h2>
           <p className="text-gray-400 dark:text-gray-500">Przejdź do Sanity Studio, aby dodać graczy.</p>
         </div>
       )}
