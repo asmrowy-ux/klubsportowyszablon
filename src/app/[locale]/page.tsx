@@ -20,7 +20,6 @@ export default async function Home() {
       <Navbar />
       <HeroSection clubName={clubName} logoRef={logoRef} />
       <NewsGridCustom posts={posts} clubName={clubName} logoRef={logoRef} />
-      <SponsorsSection sponsors={sponsors} />
       <Footer />
     </main>
   );

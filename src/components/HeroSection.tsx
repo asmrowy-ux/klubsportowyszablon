@@ -85,7 +85,7 @@ export default function HeroSection({ clubName = '', logoRef = '' }: { clubName?
         <div className="flex flex-col items-start pt-12">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 md:gap-10 mb-8">
             {bgLogoUrl && (
-              <img src={bgLogoUrl} alt={clubName} className="w-40 h-40 md:w-56 md:h-56 object-contain drop-shadow-2xl" />
+              <img src={bgLogoUrl} alt={clubName} className="w-56 h-56 md:w-80 md:h-80 object-contain drop-shadow-2xl" />
             )}
             <div className="flex flex-col leading-none pt-4">
               <h1 className="text-6xl md:text-[5.5rem] font-black uppercase tracking-tighter text-foreground m-0 p-0 leading-[0.85] drop-shadow-lg">
