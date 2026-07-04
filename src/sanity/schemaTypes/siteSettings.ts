@@ -30,6 +30,16 @@ export const siteSettingsType = defineType({
       validation: (Rule) => Rule.min(20).max(200),
     }),
     defineField({
+      name: 'mainMenu',
+      title: 'Główne Menu (Nawigacja)',
+      type: 'array',
+      description: 'Zbuduj pasek nawigacyjny. Możesz dodawać pojedyncze linki lub rozwijane listy (dropdown).',
+      of: [
+        {type: 'menuItem'},
+        {type: 'menuDropdown'}
+      ]
+    }),
+    defineField({
       name: 'favicon',
       title: 'Favicon',
       type: 'image',

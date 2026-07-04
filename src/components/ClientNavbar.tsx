@@ -8,7 +8,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { useCart } from "./CartContext";
 import CartDrawer from "./CartDrawer";
 
-export default function ClientNavbar({ logoUrl, title, logoSize }: { logoUrl?: string, title?: string, logoSize?: number }) {
+export default function ClientNavbar({ logoUrl, title, logoSize, mainMenu }: { logoUrl?: string, title?: string, logoSize?: number, mainMenu?: any[] }) {
   const t = useTranslations("Navbar");
   const pathname = usePathname();
   const { cartCount, setIsCartOpen } = useCart();
@@ -51,63 +51,95 @@ export default function ClientNavbar({ logoUrl, title, logoSize }: { logoUrl?: s
           
           {/* Main Links */}
           <div className="hidden lg:flex space-x-6 xl:space-x-8 items-center">
-            <Link href="/news" className="text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
-              AKTUALNOŚCI
-            </Link>
-            
-            {/* Drużyny dropdown */}
-            <div className="group relative">
-              <button className="flex items-center gap-1 text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
-                DRUŻYNY
-                <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
-              </button>
-              <div className="absolute top-full mt-6 left-1/2 -translate-x-1/2 bg-secondary border border-border rounded-lg overflow-hidden shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[200px]">
-                <Link href="/team" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  Pierwsza Drużyna
+            {mainMenu && mainMenu.length > 0 ? (
+              mainMenu.map((item, idx) => {
+                if (item._type === 'menuItem') {
+                  return (
+                    <Link key={idx} href={item.link || '#'} className="text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
+                      {item.title}
+                    </Link>
+                  );
+                }
+                if (item._type === 'menuDropdown') {
+                  return (
+                    <div key={idx} className="group relative">
+                      <button className="flex items-center gap-1 text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
+                        {item.title}
+                        <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                      </button>
+                      <div className="absolute top-full mt-6 left-1/2 -translate-x-1/2 bg-secondary border border-border rounded-lg overflow-hidden shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[200px]">
+                        {item.items?.map((subItem: any, subIdx: number) => (
+                          <Link key={subIdx} href={subItem.link || '#'} className={`block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors ${subIdx !== item.items.length - 1 ? 'border-b border-border' : ''}`}>
+                            {subItem.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
+                return null;
+              })
+            ) : (
+              <>
+                <Link href="/news" className="text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
+                  AKTUALNOŚCI
                 </Link>
-                <Link href="/women" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  Drużyna Kobiet
-                </Link>
-                <Link href="/academy" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  Akademia
-                </Link>
-              </div>
-            </div>
-            
-            {/* Klub dropdown */}
-            <div className="group relative">
-              <button className="flex items-center gap-1 text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
-                KLUB
-                <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
-              </button>
-              <div className="absolute top-full mt-6 left-1/2 -translate-x-1/2 bg-secondary border border-border rounded-lg overflow-hidden shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[200px]">
-                <Link href="/history" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  Historia Klubu
-                </Link>
-                <Link href="/hall-of-fame" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  Hall of Fame
-                </Link>
-                <Link href="/staff" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  Sztab Trenerski
-                </Link>
-                <Link href="/table" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
-                  Tabela Ligi
-                </Link>
-                <Link href="/matches" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors">
-                  Mecze i Wyniki
-                </Link>
-              </div>
-            </div>
+                
+                {/* Drużyny dropdown */}
+                <div className="group relative">
+                  <button className="flex items-center gap-1 text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
+                    DRUŻYNY
+                    <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                  </button>
+                  <div className="absolute top-full mt-6 left-1/2 -translate-x-1/2 bg-secondary border border-border rounded-lg overflow-hidden shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[200px]">
+                    <Link href="/team" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
+                      Pierwsza Drużyna
+                    </Link>
+                    <Link href="/women" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
+                      Drużyna Kobiet
+                    </Link>
+                    <Link href="/academy" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
+                      Akademia
+                    </Link>
+                  </div>
+                </div>
+                
+                {/* Klub dropdown */}
+                <div className="group relative">
+                  <button className="flex items-center gap-1 text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
+                    KLUB
+                    <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                  </button>
+                  <div className="absolute top-full mt-6 left-1/2 -translate-x-1/2 bg-secondary border border-border rounded-lg overflow-hidden shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[200px]">
+                    <Link href="/history" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
+                      Historia Klubu
+                    </Link>
+                    <Link href="/hall-of-fame" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
+                      Hall of Fame
+                    </Link>
+                    <Link href="/staff" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
+                      Sztab Trenerski
+                    </Link>
+                    <Link href="/table" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors border-b border-border">
+                      Tabela Ligi
+                    </Link>
+                    <Link href="/matches" className="block px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-foreground/80 hover:bg-primary hover:text-background transition-colors">
+                      Mecze i Wyniki
+                    </Link>
+                  </div>
+                </div>
 
-            <Link href="/careers" className="text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
-              KARIERA
-            </Link>
-            <Link href="/contact" className="text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
-              KONTAKT
-            </Link>
-            <Link href="/shop" className="text-[11px] font-bold tracking-[0.1em] uppercase text-primary hover:text-foreground transition-colors">
-              SKLEP
-            </Link>
+                <Link href="/careers" className="text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
+                  KARIERA
+                </Link>
+                <Link href="/contact" className="text-[11px] font-bold tracking-[0.1em] uppercase text-foreground/80 hover:text-primary transition-colors">
+                  KONTAKT
+                </Link>
+                <Link href="/shop" className="text-[11px] font-bold tracking-[0.1em] uppercase text-primary hover:text-foreground transition-colors">
+                  SKLEP
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Right Actions */}

@@ -14,9 +14,15 @@ import { stadiumType } from './stadium'
 import { legalPageType } from './legalPage'
 import { productType } from './product'
 import { ticketType } from './ticket'
+import { customPageType } from './customPage'
+import { menuItemType } from './menuItem'
+import { menuDropdownType } from './menuDropdown'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    menuItemType,
+    menuDropdownType,
+    customPageType,
     postType,
     matchType, 
     sponsorType, 
