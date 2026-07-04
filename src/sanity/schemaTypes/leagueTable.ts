@@ -43,9 +43,10 @@ export const leagueTableType = defineType({
               points: 'points',
               played: 'played',
             },
-            prepare({ teamName, points, played }: { teamName: string; points: number; played: number }) {
+            prepare(selection: Record<string, any>) {
+              const { teamName, points, played } = selection;
               return {
-                title: teamName,
+                title: teamName as string,
                 subtitle: `${points || 0} pkt | ${played || 0} meczy`,
               };
             },

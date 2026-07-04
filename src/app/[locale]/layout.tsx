@@ -58,8 +58,10 @@ export default async function RootLayout({
 
   const messages = await getMessages();
 
-  // Fetch site settings to get mainMenu for RouteGuard
+  // Fetch site settings to get mainMenu for RouteGuard and global decorative settings
   const settings = await client.fetch(`*[_type == "siteSettings"][0]{
+    decorationsEnabled,
+    decorationsColor,
     mainMenu[] {
       _type,
       title,
@@ -72,15 +74,21 @@ export default async function RootLayout({
     }
   }`);
   
-  // If the user hasn't configured any menu yet, we consider it "unconfigured" and allow everything.
-  // But wait, the previous code in ClientNavbar says if mainMenu.length > 0 it uses it.
-  // So if they delete it, it's either null or empty. But if they delete everything, they want it gone.
-  // We handle this inside RouteGuard.
   const mainMenu = settings?.mainMenu || [];
+  
+  // Decoration settings
+  const showDecorations = settings?.decorationsEnabled !== false; // default true
+  const decorationColor = settings?.decorationsColor || '#FBBF24'; // default gold
 
   return (
     <html lang={locale} className={`${inter.variable} antialiased scroll-smooth`} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col bg-background text-foreground selection:bg-primary selection:text-black">
+      <body 
+        className="min-h-screen flex flex-col bg-background text-foreground selection:bg-primary selection:text-black"
+        style={{
+          '--decoration-color': decorationColor,
+          '--decoration-display': showDecorations ? 'block' : 'none',
+        } as React.CSSProperties}
+      >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
             <CartProvider>

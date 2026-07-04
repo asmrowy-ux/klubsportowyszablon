@@ -169,18 +169,19 @@ export default function ClientNavbar({ logoUrl, title, logoSize, mainMenu }: { l
             </button>
             <Link 
               href="/contact" 
-              className="hidden sm:inline-flex relative items-center justify-center gap-1.5 px-6 py-2.5 text-primary font-bold text-[11px] uppercase tracking-widest hover:text-background hover:bg-primary transition-all group"
+              className="hidden sm:inline-flex relative items-center justify-center gap-1.5 px-6 py-2.5 font-bold text-[11px] uppercase tracking-widest hover:text-background transition-all group"
               style={{
-                clipPath: 'polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)'
+                clipPath: 'polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)',
+                color: 'var(--decoration-color)'
               }}
             >
-              <div className="absolute inset-0 border border-primary pointer-events-none" style={{ clipPath: 'polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)' }}></div>
-              <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary transition-colors -z-10"></div>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 z-10">
+              <div className="absolute inset-0 border pointer-events-none" style={{ borderColor: 'var(--decoration-color)', clipPath: 'polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)' }}></div>
+              <div className="absolute inset-0 opacity-10 group-hover:opacity-100 transition-opacity -z-10" style={{ backgroundColor: 'var(--decoration-color)' }}></div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 z-10 group-hover:text-background">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                 <circle cx="12" cy="7" r="4" />
               </svg>
-              <span className="z-10">DOŁĄCZ DO KLUBU</span>
+              <span className="z-10 group-hover:text-background">DOŁĄCZ DO KLUBU</span>
             </Link>
             <button className="lg:hidden text-foreground">
               <Menu className="w-6 h-6" />

@@ -12,7 +12,8 @@ const client = createClient({
 
 async function uploadImageFromUrl(url: string) {
   const response = await fetch(url)
-  const buffer = await response.buffer()
+  const arrayBuffer = await response.arrayBuffer()
+  const buffer = Buffer.from(arrayBuffer)
   const asset = await client.assets.upload('image', buffer)
   return {
     _type: 'image',

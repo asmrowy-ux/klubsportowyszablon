@@ -70,5 +70,23 @@ export const siteSettingsType = defineType({
       description: 'Zaznacz, aby tekst w sekcji głównej pobierał się z pola "Opis w stopce", zastępując własny opis.',
       initialValue: false,
     }),
+    defineField({
+      name: 'decorationsEnabled',
+      title: 'Pokaż Motywy Dekoracyjne',
+      type: 'boolean',
+      description: 'Zaznacz, aby wyświetlać dodatkowe akcenty graficzne (ukośne linie, ramki KLUB) w całym serwisie.',
+      initialValue: true,
+    }),
+    defineField({
+      name: 'decorationsColor',
+      title: 'Kolor Motywów Dekoracyjnych',
+      type: 'string',
+      description: 'Podaj kolor w formacie HEX (np. #FFB800). Jeśli puste, użyty zostanie domyślny złoty.',
+      initialValue: '#FBBF24',
+      validation: (Rule) => Rule.regex(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/, {
+        name: 'hex color',
+        invert: false,
+      }),
+    }),
   ],
 })

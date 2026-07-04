@@ -49,12 +49,12 @@ export default function HeroSection({ clubName = '', logoRef = '', description =
 
 
       {/* Global Diagonal Accents */}
-      <div className="absolute top-0 left-0 w-96 h-96 pointer-events-none overflow-hidden z-0">
-        <div className="absolute w-[500px] h-[2px] bg-primary -rotate-45 top-[100px] -left-[150px] opacity-60 shadow-[0_0_10px_rgba(251,191,36,0.5)]" />
-        <div className="absolute w-[500px] h-[1px] bg-primary -rotate-45 top-[130px] -left-[120px] opacity-30" />
+      <div className="absolute top-0 left-0 w-96 h-96 pointer-events-none overflow-hidden z-0" style={{ display: 'var(--decoration-display)' }}>
+        <div className="absolute w-[500px] h-[2px] -rotate-45 top-[100px] -left-[150px] opacity-60 shadow-[0_0_10px_rgba(251,191,36,0.5)]" style={{ backgroundColor: 'var(--decoration-color)' }} />
+        <div className="absolute w-[500px] h-[1px] -rotate-45 top-[130px] -left-[120px] opacity-30" style={{ backgroundColor: 'var(--decoration-color)' }} />
       </div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 pointer-events-none overflow-hidden z-0">
-        <div className="absolute w-[500px] h-[2px] bg-primary -rotate-45 bottom-[100px] -left-[150px] opacity-60 shadow-[0_0_10px_rgba(251,191,36,0.5)]" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 pointer-events-none overflow-hidden z-0" style={{ display: 'var(--decoration-display)' }}>
+        <div className="absolute w-[500px] h-[2px] -rotate-45 bottom-[100px] -left-[150px] opacity-60 shadow-[0_0_10px_rgba(251,191,36,0.5)]" style={{ backgroundColor: 'var(--decoration-color)' }} />
       </div>
 
       {/* Main Content */}
@@ -77,13 +77,13 @@ export default function HeroSection({ clubName = '', logoRef = '', description =
           </div>
 
           {/* Under-Logo Decorative Line */}
-          <div className="flex items-center mt-2 mb-8 gap-3 ml-2">
+          <div className="flex items-center mt-2 mb-8 gap-3 ml-2" style={{ display: 'var(--decoration-display)' }}>
             <div className="flex gap-1.5">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="w-1.5 h-3.5 bg-primary skew-x-[-30deg]"></div>
+                <div key={i} className="w-1.5 h-3.5 skew-x-[-30deg]" style={{ backgroundColor: 'var(--decoration-color)' }}></div>
               ))}
             </div>
-            <div className="w-64 h-[2px] bg-primary shadow-[0_0_8px_rgba(251,191,36,0.6)]"></div>
+            <div className="w-64 h-[2px] shadow-[0_0_8px_rgba(251,191,36,0.6)]" style={{ backgroundColor: 'var(--decoration-color)' }}></div>
           </div>
 
           <p className="text-foreground/80 max-w-lg text-lg leading-relaxed mb-10 font-medium ml-2 whitespace-pre-line">
@@ -91,16 +91,16 @@ export default function HeroSection({ clubName = '', logoRef = '', description =
           </p>
 
           <div className="flex items-center gap-5 ml-2 mt-2">
-            <a href="#" className="w-12 h-12 rounded-full border border-primary flex items-center justify-center hover:bg-primary hover:text-background text-white transition-colors group shadow-[0_0_10px_rgba(251,191,36,0.15)]">
+            <a href="#" className="w-12 h-12 rounded-full border flex items-center justify-center hover:bg-primary hover:text-background text-white transition-colors group shadow-[0_0_10px_rgba(251,191,36,0.15)]" style={{ borderColor: 'var(--decoration-color)' }}>
               <Globe className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </a>
-            <a href="#" className="w-12 h-12 rounded-full border border-primary flex items-center justify-center hover:bg-primary hover:text-background text-white transition-colors group shadow-[0_0_10px_rgba(251,191,36,0.15)]">
+            <a href="#" className="w-12 h-12 rounded-full border flex items-center justify-center hover:bg-primary hover:text-background text-white transition-colors group shadow-[0_0_10px_rgba(251,191,36,0.15)]" style={{ borderColor: 'var(--decoration-color)' }}>
               <FacebookIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </a>
-            <a href="#" className="w-12 h-12 rounded-full border border-primary flex items-center justify-center hover:bg-primary hover:text-background text-white transition-colors group shadow-[0_0_10px_rgba(251,191,36,0.15)]">
+            <a href="#" className="w-12 h-12 rounded-full border flex items-center justify-center hover:bg-primary hover:text-background text-white transition-colors group shadow-[0_0_10px_rgba(251,191,36,0.15)]" style={{ borderColor: 'var(--decoration-color)' }}>
               <InstagramIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </a>
-            <a href="#" className="w-12 h-12 rounded-full border border-primary flex items-center justify-center hover:bg-primary hover:text-background text-white transition-colors group shadow-[0_0_10px_rgba(251,191,36,0.15)]">
+            <a href="#" className="w-12 h-12 rounded-full border flex items-center justify-center hover:bg-primary hover:text-background text-white transition-colors group shadow-[0_0_10px_rgba(251,191,36,0.15)]" style={{ borderColor: 'var(--decoration-color)' }}>
               <YoutubeIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </a>
           </div>
@@ -108,42 +108,44 @@ export default function HeroSection({ clubName = '', logoRef = '', description =
 
         {/* Right Column: "KLUB" Menu Card */}
         <div className="flex justify-start lg:justify-end pt-12">
-          <div className="relative bg-[#0d0d0d]/95 backdrop-blur-xl border border-primary/50 rounded-[40px] p-8 w-full max-w-[400px] h-[640px] shadow-[0_0_30px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col">
+          <div className="relative bg-[#0d0d0d]/95 backdrop-blur-xl border rounded-[40px] p-8 w-full max-w-[400px] h-[640px] shadow-[0_0_30px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col" style={{ borderColor: 'color-mix(in srgb, var(--decoration-color) 50%, transparent)' }}>
             
-            {/* Top Right Accents */}
-            <div className="absolute -top-4 -right-4 w-40 h-40 pointer-events-none">
-              <div className="absolute w-[120px] h-[1px] bg-primary -rotate-45 top-[40px] left-[20px]" />
-              <div className="absolute w-[140px] h-[4px] bg-primary -rotate-45 top-[60px] left-[10px] shadow-[0_0_8px_rgba(251,191,36,0.8)]" />
-              <div className="absolute w-[100px] h-[10px] bg-primary -rotate-45 top-[85px] left-[40px]" />
-              <div className="absolute w-[40px] h-[2px] bg-primary -rotate-45 top-[110px] left-[90px]" />
-            </div>
-            
-            {/* Bottom Right Accents */}
-            <div className="absolute -bottom-4 -right-4 w-48 h-48 pointer-events-none">
-              <div className="absolute w-[160px] h-[2px] bg-primary -rotate-45 top-[100px] left-[10px]" />
-              <div className="absolute w-[140px] h-[6px] bg-primary -rotate-45 top-[120px] left-[30px] shadow-[0_0_8px_rgba(251,191,36,0.8)]" />
-              <div className="absolute w-[100px] h-[14px] bg-primary -rotate-45 top-[145px] left-[60px]" />
-              <div className="absolute flex gap-1.5 -rotate-45 top-[175px] left-[90px]">
-                {[...Array(6)].map((_, i) => <div key={i} className="w-1.5 h-1.5 bg-primary/80 rotate-45 rounded-sm" />)}
+            <div style={{ display: 'var(--decoration-display)' }}>
+              {/* Top Right Accents */}
+              <div className="absolute -top-4 -right-4 w-40 h-40 pointer-events-none">
+                <div className="absolute w-[120px] h-[1px] -rotate-45 top-[40px] left-[20px]" style={{ backgroundColor: 'var(--decoration-color)' }} />
+                <div className="absolute w-[140px] h-[4px] -rotate-45 top-[60px] left-[10px] shadow-[0_0_8px_rgba(251,191,36,0.8)]" style={{ backgroundColor: 'var(--decoration-color)' }} />
+                <div className="absolute w-[100px] h-[10px] -rotate-45 top-[85px] left-[40px]" style={{ backgroundColor: 'var(--decoration-color)' }} />
+                <div className="absolute w-[40px] h-[2px] -rotate-45 top-[110px] left-[90px]" style={{ backgroundColor: 'var(--decoration-color)' }} />
+              </div>
+              
+              {/* Bottom Right Accents */}
+              <div className="absolute -bottom-4 -right-4 w-48 h-48 pointer-events-none">
+                <div className="absolute w-[160px] h-[2px] -rotate-45 top-[100px] left-[10px]" style={{ backgroundColor: 'var(--decoration-color)' }} />
+                <div className="absolute w-[140px] h-[6px] -rotate-45 top-[120px] left-[30px] shadow-[0_0_8px_rgba(251,191,36,0.8)]" style={{ backgroundColor: 'var(--decoration-color)' }} />
+                <div className="absolute w-[100px] h-[14px] -rotate-45 top-[145px] left-[60px]" style={{ backgroundColor: 'var(--decoration-color)' }} />
+                <div className="absolute flex gap-1.5 -rotate-45 top-[175px] left-[90px]">
+                  {[...Array(6)].map((_, i) => <div key={i} className="w-1.5 h-1.5 rotate-45 rounded-sm opacity-80" style={{ backgroundColor: 'var(--decoration-color)' }} />)}
+                </div>
+              </div>
+              
+              {/* Left side dots */}
+              <div className="absolute left-6 top-[35%] flex flex-col gap-2 pointer-events-none">
+                <div className="w-1.5 h-1.5 rounded-[1px] border-[1.5px]" style={{ borderColor: 'var(--decoration-color)' }}></div>
+                <div className="w-1.5 h-1.5 rounded-[1px] border-[1.5px]" style={{ borderColor: 'var(--decoration-color)' }}></div>
+                <div className="w-1.5 h-1.5 rounded-[1px] border-[1.5px]" style={{ borderColor: 'var(--decoration-color)' }}></div>
+                <div className="w-1.5 h-1.5 rounded-[1px] border-[1.5px]" style={{ borderColor: 'var(--decoration-color)' }}></div>
               </div>
             </div>
-            
-            {/* Left side dots */}
-            <div className="absolute left-6 top-[35%] flex flex-col gap-2 pointer-events-none">
-              <div className="w-1.5 h-1.5 rounded-[1px] border-[1.5px] border-primary"></div>
-              <div className="w-1.5 h-1.5 rounded-[1px] border-[1.5px] border-primary"></div>
-              <div className="w-1.5 h-1.5 rounded-[1px] border-[1.5px] border-primary"></div>
-              <div className="w-1.5 h-1.5 rounded-[1px] border-[1.5px] border-primary"></div>
-            </div>
 
-            <h2 className="relative z-10 text-primary font-black text-3xl uppercase tracking-widest mt-12 ml-10 mb-8 drop-shadow-md">KLUB</h2>
+            <h2 className="relative z-10 font-black text-3xl uppercase tracking-widest mt-12 ml-10 mb-8 drop-shadow-md" style={{ color: 'var(--decoration-color)' }}>KLUB</h2>
             
             {/* Inner Zig-Zag Container */}
             <div className="relative z-10 flex-1 mx-4 mb-10 flex flex-col">
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100">
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100" style={{ display: 'var(--decoration-display)' }}>
                 <path 
                   d="M 10 0 L 100 0 L 100 100 L 0 100 L 0 85 L 8 80 L 0 75 L 0 65 L 8 60 L 0 55 L 0 45 L 8 40 L 0 35 L 0 25 L 8 20 L 0 15 L 0 8 L 8 0 Z" 
-                  stroke="#FBBF24" strokeWidth="0.5" fill="none" vectorEffect="non-scaling-stroke" strokeOpacity="0.8"
+                  stroke="var(--decoration-color)" strokeWidth="0.5" fill="none" vectorEffect="non-scaling-stroke" strokeOpacity="0.8"
                 />
               </svg>
 
