@@ -64,7 +64,7 @@ export default async function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
             <div className="col-span-1 lg:col-span-2">
-              <Link href="/" className="flex items-center gap-3 mb-6">
+              <Link href="/" className="flex items-center gap-2 mb-6">
                 {logoUrl ? (
                   <img 
                     src={logoUrl} 
@@ -77,7 +77,7 @@ export default async function Footer() {
                     NC
                   </div>
                 )}
-                <div className="flex flex-col leading-none pt-1">
+                <div className="flex flex-col leading-none">
                   <div className="font-black text-xl tracking-wider uppercase drop-shadow-sm flex gap-1">
                     <span className="text-foreground">{clubName ? clubName.split(' ')[0] : 'WICHER'}</span>
                     <span className="text-primary">{clubName ? clubName.split(' ').slice(1).join(' ') : 'GDYNIA'}</span>

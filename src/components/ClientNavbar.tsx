@@ -24,7 +24,7 @@ export default function ClientNavbar({ logoUrl, title, logoSize, mainMenu }: { l
           
           {/* Logo & Title */}
           <div className="flex items-center shrink-0">
-            <Link href="/" className="flex-shrink-0 flex items-center gap-3">
+            <Link href="/" className="flex-shrink-0 flex items-center gap-2">
               {logoUrl ? (
                 <img 
                   src={logoUrl} 
@@ -37,7 +37,7 @@ export default function ClientNavbar({ logoUrl, title, logoSize, mainMenu }: { l
                   NC
                 </div>
               )}
-              <div className="hidden sm:flex flex-col leading-none pt-1">
+              <div className="hidden sm:flex flex-col leading-none">
                 <div className="font-black text-xl md:text-2xl tracking-wider uppercase drop-shadow-sm flex gap-1">
                   <span className="text-foreground">{titleFirst}</span>
                   <span className="text-primary">{titleRest}</span>

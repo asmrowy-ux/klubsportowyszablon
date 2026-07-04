@@ -36,48 +36,17 @@ export default function HeroSection({ clubName = '', logoRef = '', description =
 
   return (
     <section className="relative h-screen min-h-[800px] flex items-center overflow-hidden bg-background">
-      {/* Background stays the same as before */}
       <div 
-        className="absolute inset-0 z-0 opacity-30 dark:opacity-30 opacity-10"
-        style={{
-          background: 'radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.25) 0%, transparent 60%), radial-gradient(circle at 90% 90%, rgba(100, 100, 100, 0.1) 0%, transparent 60%)'
-        }}
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40 dark:opacity-30"
+        style={{ backgroundImage: 'url(/hero-bg.png)' }}
       />
       
-      {bgLogoUrl && (
-        <svg className="absolute inset-0 z-0 w-full h-full opacity-40 dark:opacity-40 opacity-10">
-          <defs>
-            <pattern 
-              id="club-pattern" 
-              x="0" 
-              y="0" 
-              width="200" 
-              height="200" 
-              patternUnits="userSpaceOnUse"
-            >
-              <line x1="0" y1="0" x2="200" y2="200" stroke="rgba(212, 175, 55, 0.4)" strokeWidth="1" className="animate-pulse" />
-              <line x1="200" y1="0" x2="0" y2="200" stroke="rgba(100, 100, 100, 0.3)" strokeWidth="1" className="animate-pulse" style={{ animationDelay: '1s' }} />
-              
-              <circle cx="200" cy="0" r="5" fill="currentColor" className="animate-ping text-foreground" style={{ animationDuration: '3s' }} opacity="0.4" />
-              <circle cx="0" cy="200" r="8" fill="rgba(212, 175, 55, 1)" className="animate-pulse" style={{ animationDuration: '2s' }} opacity="0.6" />
-              
-              <image 
-                href={bgLogoUrl} 
-                x="40" 
-                y="40" 
-                width="120" 
-                height="120" 
-                preserveAspectRatio="xMidYMid meet" 
-                opacity="0.1"
-              />
-            </pattern>
-          </defs>
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#club-pattern)" />
-        </svg>
-      )}
+      {/* Animated gradient overlay over the image */}
+      <div className="absolute inset-0 bg-gradient-animated opacity-20 mix-blend-overlay z-0 pointer-events-none" />
 
       <div className="absolute inset-0 z-0 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
       <div className="absolute inset-0 z-0 bg-gradient-to-r from-background via-background/50 to-transparent pointer-events-none" />
+
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-20">
